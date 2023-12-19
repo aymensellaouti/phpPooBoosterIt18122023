@@ -1,9 +1,12 @@
 <?php
 class Chaine
 {
+    private static $nbChaine = 0; 
 
     public function __construct(private $string = '')
-    {}
+    {
+        self::$nbChaine ++;
+    }
 
     /**
      * @return string
@@ -173,5 +176,14 @@ class Chaine
     public function regrouper(array $elements, string $separateur): string {
         $this->string = implode($separateur, $elements);
         return $this->string;
+    }
+
+    public static function showNbChaine() {
+        echo "Nombre d'instances actives : ".self::$nbChaine.PHP_EOL;
+    }
+
+    public function __destruct()
+    {
+        self::$nbChaine --;
     }
 }

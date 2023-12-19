@@ -1,6 +1,8 @@
 <?php 
 class Session {
     
+    private static $nbSession = 0;
+
     /**
      * Crée une session 
      * Chaque personne qui instancie une session 
@@ -8,8 +10,11 @@ class Session {
      * 
      */
     public function __construct() {
+        self::$nbSession++;
         session_start();
     }
+
+    public static function getNbSession() { return self::$nbSession; }  
 
     /**
      * Vérifie si une variable de clé key existe dans la session
