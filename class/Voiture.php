@@ -8,7 +8,10 @@ class Voiture {
         private string $brand = 'voiture',
         private int $speed = 0, 
         private string $color = 'black', 
-        private int $strengh = 4
+        private int $strengh = 4, 
+        private bool $engineState = false,
+        private int $maxAcceleration = 10,
+        private int $maxSpeed = 180,
     ) {}
 
     /**
@@ -101,4 +104,101 @@ class Voiture {
         echo "Vitesse : ".$this->speed.PHP_EOL;
         echo "================================".PHP_EOL;
     }
+
+    /**
+     * Permet de changer l'état du moteur en 
+     * jouant sur la propriété $engineState 
+     */
+    public function startEngine() {
+        if(!$this->engineState) {
+            $this->engineState = true;
+            echo "Le mot est démarré";
+        } else {
+            echo "Le mot est déjà démarré";
+        }
+    }
+
+    /**
+     * Permet d'accélerer en ajoutant $acceleration et en respectant les régles suivantes
+     * On ne dépasse jamais ni l'acceleration maximale ni la vitesseMaximale
+     * 
+     * @param $acceleration qui est l'accélération de la voiture
+     */
+    public function accelerate($acceleration): void {
+        if($this->engineState && $acceleration <= $this->maxAcceleration) {
+            $this->speed = min($acceleration+$this->speed,$this->maxSpeed);
+        }
+    }
+    /**
+     * Permet de freiner en soustrayant $reduce et en respectant les régles suivantes
+     * On ne n'a jamais une vitesse inférieur à 0 
+     * ni un freinage supérieurà l'accélération
+     * 
+     * @param $reduce qui est l'accélération de la voiture
+     */
+    public function brake($reduce) {
+        if($this->engineState && $reduce <= $this->maxAcceleration) {
+            $this->speed = max($this->speed-$reduce,0);
+        }
+    }
+
+        /**
+         * Get the value of engineState
+         */ 
+        public function getEngineState()
+        {
+                return $this->engineState;
+        }
+
+        /**
+         * Set the value of engineState
+         *
+         * @return  self
+         */ 
+        public function setEngineState()
+        {
+                $this->engineState = !$this->engineState;
+
+                return $this;
+        }
+
+        /**
+         * Get the value of maxAcceleration
+         */ 
+        public function getMaxAcceleration()
+        {
+                return $this->maxAcceleration;
+        }
+
+        /**
+         * Set the value of maxAcceleration
+         *
+         * @return  self
+         */ 
+        public function setMaxAcceleration($maxAcceleration)
+        {
+                $this->maxAcceleration = $maxAcceleration;
+
+                return $this;
+        }
+
+        /**
+         * Get the value of maxSpeed
+         */ 
+        public function getMaxSpeed()
+        {
+                return $this->maxSpeed;
+        }
+
+        /**
+         * Set the value of maxSpeed
+         *
+         * @return  self
+         */ 
+        public function setMaxSpeed($maxSpeed)
+        {
+                $this->maxSpeed = $maxSpeed;
+
+                return $this;
+        }
 }
