@@ -108,7 +108,11 @@ class Chaine
      */
     public function trim(int $option = 0): string
     {
-        
+        switch ($option) {
+            case 0: return trim($this->string);
+            case 1: return ltrim($this->string);
+            default: return rtrim($this->string);
+        } 
     }
 
     /**
@@ -117,7 +121,7 @@ class Chaine
      * @return string
      */
     public function upperCase(): string {
-
+        return strtoupper($this->string);
     }
 
     /**
@@ -126,7 +130,7 @@ class Chaine
      * @return string
      */
     public function lowerCase(): string {
-
+        return strtolower($this->string);
     }
 
     /**
@@ -136,7 +140,7 @@ class Chaine
      * @return string
      */
     public function compare(Chaine $chaine): int {
-
+        return strcmp($this->string, $chaine->string);
     }
 
     /**
@@ -146,7 +150,7 @@ class Chaine
      * @return string
      */
     public function caseCompare(Chaine $chaine): string {
-
+        return strcasecmp($this->string, $chaine->string);
     }
 
     /**
@@ -156,7 +160,7 @@ class Chaine
      * @return string[]
      */
     public function decomposer(string $separateur): array {
-
+        return explode($separateur, $this->string);
     }
 
     /**
@@ -167,5 +171,7 @@ class Chaine
      * @return string
      */
     public function regrouper(array $elements, string $separateur): string {
+        $this->string = implode($separateur, $elements);
+        return $this->string;
     }
 }
