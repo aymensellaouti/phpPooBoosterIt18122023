@@ -5,7 +5,7 @@ class SavingAccount extends BankAccount {
     protected DateTime | null $lastInterestApplication = null;
     public function __construct(
         protected $interestRate = 1,   
-        private $balance
+        protected float $balance
     ) {
         if($balance < self::MIN_BALANCE) {
             throw new Exception('Balance insuffisante');
