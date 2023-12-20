@@ -1,10 +1,10 @@
 <?php 
 include_once 'Person.php';
-class User extends Person {
+class User {
 
 
     public function __construct(protected $email, $name) {
-        parent::__construct($name);
+       
     }
 
     /**
