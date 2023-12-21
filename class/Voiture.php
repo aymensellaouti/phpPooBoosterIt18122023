@@ -1,6 +1,8 @@
 <?php
 
-class Voiture {
+include_once 'Vehicule.php';
+
+class Voiture  {
 
     // Préparter et irriguer votre objet
     public function __construct(

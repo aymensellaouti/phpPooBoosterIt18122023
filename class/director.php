@@ -1,6 +1,6 @@
 <?php
 include_once 'Chef.php';
-class Director extends Chef
+class Director extends Chef 
 {
 
     public function __construct(

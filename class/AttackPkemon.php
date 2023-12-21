@@ -1,6 +1,6 @@
 <?php 
-
-class AttackPokemon {
+include_once 'IAttaquePokemon';
+class AttackPokemon implements IAttackPokemon {
 
     public function __construct(
         protected int $minAttack,
@@ -91,7 +91,7 @@ class AttackPokemon {
 
         public function attackPoints(): int {
             // attaque simple
-            $simpleAttaque = random_int($this->minAttack, $this->maxAttack);
+            $simpleAttaque = rand($this->minAttack, $this->maxAttack);
             // Probabilité d'une attaque spéciale 
             $isSpecialAttackProbability = random_int(0,100);
             $isSpecialAttaque = $isSpecialAttackProbability <= $this->probabilitySpecialAttack ? 1 : 0;

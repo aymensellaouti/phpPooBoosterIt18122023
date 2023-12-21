@@ -6,7 +6,7 @@ class Pokemon {
         protected string $name,
         protected string $imageUrl,
         protected int $hp,
-        protected AttackPokemon $attackPokemon,
+        protected IAttackPokemon $attackPokemon,
     ) {}
 
 
@@ -100,7 +100,7 @@ class Pokemon {
             return $attaque;
         }
 
-        public function whoAmI() {
+        public final function whoAmI() {
             // TODO : Ajouter les echos
         }
 }
