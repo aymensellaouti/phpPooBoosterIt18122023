@@ -88,4 +88,14 @@ class AttackPokemon {
 
                 return $this;
         }
+
+        public function attackPoints(): int {
+            // attaque simple
+            $simpleAttaque = random_int($this->minAttack, $this->maxAttack);
+            // Probabilité d'une attaque spéciale 
+            $isSpecialAttackProbability = random_int(0,100);
+            $isSpecialAttaque = $isSpecialAttackProbability <= $this->probabilitySpecialAttack ? 1 : 0;
+            // attaque  
+            return $isSpecialAttaque ? ($simpleAttaque * $this->specialAttack) : $simpleAttaque;
+        }
 }

@@ -89,4 +89,18 @@ class Pokemon {
 
                 return $this;
         }
+
+        public function isDead(): bool {
+            return $this->hp <= 0;
+        }
+
+        public function attack(Pokemon $pokemon): int {
+            $attaque = $this->attackPokemon->attackPoints();
+            $pokemon->hp -= $attaque; 
+            return $attaque;
+        }
+
+        public function whoAmI() {
+            // TODO : Ajouter les echos
+        }
 }
