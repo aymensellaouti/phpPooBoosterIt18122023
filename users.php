@@ -49,8 +49,8 @@ $users = $response->fetchAll(PDO::FETCH_OBJ);
                         <!-- details.php?id=2 -->
                         <td>
                             <a class="btn btn-outline-info" href="details.php?id=<?= $user->id ?>">Détails</a>
-                            <a class="btn btn-outline-success" href="details.php?id=<?= $user->id ?>">Update</a>
-                            <a class="btn btn-outline-danger" href="details.php?id=<?= $user->id ?>">Delete</a>
+                            <a class="btn btn-outline-success" href="updateUser.php?id=<?= $user->id ?>">Update</a>
+                            <a class="btn btn-outline-danger" href="deleteUser.php?id=<?= $user->id ?>">Delete</a>
                         </td>
                     </tr>
                 <?php endforeach ?>
