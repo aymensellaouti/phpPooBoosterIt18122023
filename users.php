@@ -34,6 +34,7 @@
                 <th>Id</th>
                 <th>Name</th>
                 <th>Date de naissance</th>
+                <th>Actions</th>
             </tr>
         </thead>
         <tbody>
@@ -42,6 +43,8 @@
                     <td><?= $user->id ?></td>
                     <td><?= $user->name ?></td>
                     <td><?= $user->birthday ?></td>
+                    <!-- details.php?id=2 -->
+                    <td><a href="details.php?id=<?=$user->id ?>">Détails</a></td>
                 </tr>
             <?php endforeach ?>
         </tbody>
