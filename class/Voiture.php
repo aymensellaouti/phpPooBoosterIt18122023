@@ -203,4 +203,9 @@ class Voiture  {
 
                 return $this;
         }
-}
+
+    public function __toString(): string {
+        return "Je suis une {$this->brand}";
+    }
+
+    }

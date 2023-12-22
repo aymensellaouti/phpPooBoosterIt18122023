@@ -1,5 +1,5 @@
 <?php 
-include_once 'IAttaquePokemon';
+include_once 'IAttackPokemon.php';
 class AttackPokemon implements IAttackPokemon {
 
     public function __construct(

@@ -1,13 +1,17 @@
 <?php
-include_once 'class/AttackPkemon.php';
-include_once 'class/Pokemon.php';
-include_once 'class/PokemonFigth.php';
-$dracauFeuGigamaxAttackPokemon = new AttackPokemon(10, 100, 2, 20);
-$dracauFeuGigamax = new Pokemon('Dracaufeu Gigamax', 'https://www.pokepedia.fr/images/thumb/8/8b/Dracaufeu_%28Gigamax%29-EB.png/611px-Dracaufeu_%28Gigamax%29-EB.png?20191016133231', 200, $dracauFeuGigamaxAttackPokemon);
-$pikachuGigamaxAttackPokemon = new AttackPokemon(30, 80, 4, 20);
-$pikachuFeuGigamax = new Pokemon('Pikachu Gigamax', 'https://www.pokepedia.fr/images/thumb/7/73/Pikachu_%28Gigamax%29-EB.png/250px-Pikachu_%28Gigamax%29-EB.png', 200, $pikachuGigamaxAttackPokemon);
 
-$fight = new PokemonFight($dracauFeuGigamax, $pikachuFeuGigamax);
+include_once 'class/autoloader.php';
+// 1- Je vérifier est ce qu'elle est déjà incluse dans ce script 
+
+// 2- Il existe dans PHP une pile d'autoloader il va commencer à) empiler les fonctions une par une 
+// Dans chaque il va passe le nom de la classe en paramètre 
+
+$dracauFeuGigamaxAttackPokemon = new AttackPokemon(10, 100, 2, 20);
+$dracauFeuGigamax = new FirePokemon('Dracaufeu Gigamax', 'https://www.pokepedia.fr/images/thumb/8/8b/Dracaufeu_%28Gigamax%29-EB.png/611px-Dracaufeu_%28Gigamax%29-EB.png?20191016133231', 200, $dracauFeuGigamaxAttackPokemon);
+$pikachuGigamaxAttackPokemon = new AttackPokemon(30, 80, 4, 20);
+$pikachuWaterGigamax = new WaterPokemon('Pikachu Gigamax', 'https://www.pokepedia.fr/images/thumb/7/73/Pikachu_%28Gigamax%29-EB.png/250px-Pikachu_%28Gigamax%29-EB.png', 200, $pikachuGigamaxAttackPokemon);
+
+$fight = new PokemonFight($dracauFeuGigamax, $pikachuWaterGigamax);
 ?>
 <!doctype html>
 <html lang="en">
