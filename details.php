@@ -1,7 +1,8 @@
 <?php 
     include_once 'class/autoloader.php';
     // Je veux me connecter à ma base donc je veux récupérer l'instance HELP !!!
-    
+    // INSERT INTO `user` (`id`, `name`, `birthday`) VALUES (NULL, :name, :birthday);
+    // UPDATE `user` SET `name` = ?, `birthday` = ?  WHERE `user`.`id` = ?;
     // On doit revoir un id en GET
     // On doit vérifier l'existance de l'ID
     if (!isset($_GET['id'])) { 
@@ -12,10 +13,11 @@
         // Si l'id existe
         // On va chercher le user d'id id 
         $db = ConnexionBD::getInstance();
-        $query = "SELECT * FROM `user` WHERE `id` = '$id'";
+        // id = 1; 
+        $query = "SELECT * FROM `user` WHERE `id` = ?";
         // Retourner quelque chose d'inutilisable
-        $response = $db->query($query);
-        
+        $response = $db->prepare($query);
+        $response->execute([$id]);
         // On va utilsier fetch si on veut un element 
         $user = $response->fetch(PDO::FETCH_OBJ);
         // On le trouve => affiche
