@@ -1,3 +1,18 @@
+
+<?php 
+include_once 'class/autoloader.php';
+if (!isset($_GET['id'])) { 
+    header('location:users.php');   
+} else { 
+    $id = $_GET['id'];
+    $userRepository = new UserRepository();
+    $user = $userRepository->findById($id);
+    if (!$user) {
+        header('location:users.php');   
+    }
+}
+?>
+
 <!doctype html>
 <html lang="en">
 <head>
@@ -11,7 +26,7 @@
 </head>
 <body>
 <div class="container">
-<form action="handleAddUser.php"
+<form action="handleUpdateUser.php"
       method="post"
 >
     <fieldset>
@@ -24,6 +39,7 @@
                     type="text"
                     class="form-control"
                     id="name"
+                    value="<?=$user->name ?>"
                     placeholder="Veuillez saisir le nom de l'étudiant"
                     name="name"
                 >
@@ -35,9 +51,19 @@
                 <input
                     required
                     type="date"
+                    value="<?=$user->birthday?>"
                     class="form-control"
                     id="birthday"
                     name="birthday"
+                >
+            </div>
+            <div>
+                <input
+                    required
+                    hidden
+                    value="<?=$user->id?>"
+                    class="form-control"
+                    name="id"
                 >
             </div>
         </div>        

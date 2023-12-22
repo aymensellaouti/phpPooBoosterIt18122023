@@ -9,19 +9,8 @@
         header('location:users.php');   
     } else { 
         $id = $_GET['id'];
-        // S'il n'existe pas on le renvoi vers la page users.php
-        // Si l'id existe
-        // On va chercher le user d'id id 
-        $db = ConnexionBD::getInstance();
-        // id = 1; 
-        $query = "SELECT * FROM `user` WHERE `id` = ?";
-        // Retourner quelque chose d'inutilisable
-        $response = $db->prepare($query);
-        $response->execute([$id]);
-        // On va utilsier fetch si on veut un element 
-        $user = $response->fetch(PDO::FETCH_OBJ);
-        // On le trouve => affiche
-        // On ne le retrouve pas => affiche un message user innexistant
+        $userRepository = new UserRepository();
+        $user = $userRepository->findById($id);
     }
     ?>
     <!DOCTYPE html>
