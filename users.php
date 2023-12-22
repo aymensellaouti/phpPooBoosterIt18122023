@@ -1,17 +1,17 @@
-<?php 
-    include_once 'class/autoloader.php';
-    // Je veux me connecter à ma base donc je veux récupérer l'instance HELP !!!
-    
-    $db = ConnexionBD::getInstance();
-    
-    $query = "SELECT * FROM `user`";
-    // Retourner quelque chose d'inutilisable
-    $response = $db->query($query);
-    
-    // On va utilsier fetch si on veut un element 
-    
-    // On va utilsier fetchAll si on veut +eurs elements 
-    $users = $response->fetchAll(PDO::FETCH_OBJ);
+<?php
+include_once 'class/autoloader.php';
+// Je veux me connecter à ma base donc je veux récupérer l'instance HELP !!!
+
+$db = ConnexionBD::getInstance();
+
+$query = "SELECT * FROM `user`";
+// Retourner quelque chose d'inutilisable
+$response = $db->query($query);
+
+// On va utilsier fetch si on veut un element 
+
+// On va utilsier fetchAll si on veut +eurs elements 
+$users = $response->fetchAll(PDO::FETCH_OBJ);
 ?>
 
 
@@ -28,29 +28,36 @@
 
 <body>
     <div class="container">
+        <div class="alert alert-ligth">
+            <a class="btn btn-outline-primary" href="addUser.php">Add User</a>
+        </div>
         <table id="example" class="display" style="width:100%">
-        <thead>
-            <tr>
-                <th>Id</th>
-                <th>Name</th>
-                <th>Date de naissance</th>
-                <th>Actions</th>
-            </tr>
-        </thead>
-        <tbody>
-            <?php foreach ($users as $user) : ?>
+            <thead>
                 <tr>
-                    <td><?= $user->id ?></td>
-                    <td><?= $user->name ?></td>
-                    <td><?= $user->birthday ?></td>
-                    <!-- details.php?id=2 -->
-                    <td><a href="details.php?id=<?=$user->id ?>">Détails</a></td>
+                    <th>Id</th>
+                    <th>Name</th>
+                    <th>Date de naissance</th>
+                    <th>Actions</th>
                 </tr>
-            <?php endforeach ?>
-        </tbody>
-    </table> 
+            </thead>
+            <tbody>
+                <?php foreach ($users as $user) : ?>
+                    <tr>
+                        <td><?= $user->id ?></td>
+                        <td><?= $user->name ?></td>
+                        <td><?= $user->birthday ?></td>
+                        <!-- details.php?id=2 -->
+                        <td>
+                            <a class="btn btn-outline-info" href="details.php?id=<?= $user->id ?>">Détails</a>
+                            <a class="btn btn-outline-success" href="details.php?id=<?= $user->id ?>">Update</a>
+                            <a class="btn btn-outline-danger" href="details.php?id=<?= $user->id ?>">Delete</a>
+                        </td>
+                    </tr>
+                <?php endforeach ?>
+            </tbody>
+        </table>
     </div>
-   
+
 
 
     <script src="https://code.jquery.com/jquery-3.7.0.js"></script>
